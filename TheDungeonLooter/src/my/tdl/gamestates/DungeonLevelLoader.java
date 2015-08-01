@@ -32,11 +32,11 @@ public class DungeonLevelLoader extends GameState {
 		
 		if (worldName == null) {
 			worldName = "NULL";
-			map_name = "DAROmap"; //default map
+			map_name = "Wrath"; //default map
 		}
 		world = new World(worldName, gsm);
 		world.setSize(100,100); //set size of world
-		world.setWorldSpawn(0, 0 );
+		world.setWorldSpawn(10, 49 );
 		
 		world.addPlayer(new Player());
 		

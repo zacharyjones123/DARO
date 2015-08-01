@@ -1,6 +1,8 @@
 package my.tdl.gamestates;
 
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
+import java.awt.image.RenderedImage;
 
 import my.project.gop.main.SpriteSheet;
 import my.project.gop.main.loadImageFrom;
@@ -44,12 +46,15 @@ public class MenuState extends GameState {
 
 	@Override
 	public void render(Graphics2D g) {
+		RenderedImage ri = loadImageFrom.LoadImageFrom(Main.class, "ri.jpg");
+		AffineTransform at =  new AffineTransform();
+		//g.clipRect(0, 0, Main.width, Main.height);
+		g.drawRenderedImage(ri, at);
 		startGame.render(g);
 		multiplayer.render(g);
 		options.render(g);
 		quit.render(g);
 		mm.render(g);
-		g.clipRect(0, 0, Main.width, Main.height);
 	}
 
 }

@@ -14,6 +14,8 @@ public class Assets {
 	
 	public static BufferedImage stone_1;
 	public static BufferedImage wall_1;
+	public static BufferedImage templeStone_1;
+	public static BufferedImage stoneWindow_1;
 	
 	public static BufferedImage mouse_pressed;
 	public static BufferedImage mouse_unpressed;
@@ -36,6 +38,8 @@ public class Assets {
 	
 		stone_1 = blocks.getTile(0, 0, 16, 16);
 		wall_1 =  blocks.getTile(16, 0, 16, 16);
+		templeStone_1 = blocks.getTile(16, 32, 16, 16);
+		stoneWindow_1 = blocks.getTile(32, 16, 16, 16);
 		
 		mouse_pressed = daro.getTile(128, 0, 8, 8);
 		mouse_unpressed = daro.getTile(136, 0, 8, 8);
@@ -59,6 +63,14 @@ public class Assets {
 	
 	public static BufferedImage getWall_1() {
 		return wall_1;
+	}
+	
+	public static BufferedImage getTempleStone_1() {
+		return templeStone_1;
+	}
+	
+	public static BufferedImage getStoneWindow_1() {
+		return stoneWindow_1;
 	}
 	
 	public static BufferedImage getMouse_pressed() {

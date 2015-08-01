@@ -19,8 +19,8 @@ public class TileManager {
 
 	public TileManager(World world) {
 		this.world = world;
-		lm = new LightManager(load_blocks);
-		lm.init();
+		//lm = new LightManager(load_blocks);
+		//lm.init();
 	}
 
 	public void tick(double deltaTime) {
@@ -42,7 +42,7 @@ public class TileManager {
 			}
 
 			// block.pos.add(new Vector2F(1,0)); //makes the blocks move
-			lm.tick();
+			//lm.tick();
 		}
 		
 		if (!world.getPlayer().isDebuging()) {
@@ -58,7 +58,7 @@ public class TileManager {
 			block.render(g);
 		}
 		
-		lm.render(g);
+		//lm.render(g);
 	}
 
 	public CopyOnWriteArrayList<Block> getBlocks() {

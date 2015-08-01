@@ -19,7 +19,7 @@ public class Block extends Rectangle {
 	private boolean isAlive;
 	private boolean droped = false;
 
-	private float lightLevel = 1f; // 1f gives pitch black, 0.1f is more
+	private float lightLevel = 0.5f; // 1f gives pitch black, 0.1f is more
 										// transparent
 
 	public Block(Vector2F pos, BlockType blocktype) {
@@ -49,6 +49,12 @@ public class Block extends Rectangle {
 		case WALL_1:
 			block = Assets.getWall_1();
 			break;
+		case TEMPLESTONE_1:
+			block = Assets.getTempleStone_1();
+			break;
+		case STONEWINDOW_1:
+			block = Assets.getStoneWindow_1();
+			break;
 
 		}
 	}
@@ -69,15 +75,15 @@ public class Block extends Rectangle {
 
 				// Next three lines put a faded gray layer over all of the
 				// blocks
-				System.out.println(lightLevel);
-				g.setComposite(AlphaComposite.getInstance(
-						AlphaComposite.SRC_OVER, lightLevel));
-				g.setColor(Color.BLACK);
-				g.fillRect((int) pos.getWorldLocation().xpos,
-						(int) pos.getWorldLocation().ypos, BlockSize, BlockSize);
-				g.setColor(Color.WHITE);
-				g.setComposite(AlphaComposite.getInstance(
-						AlphaComposite.SRC_OVER, 1));
+//				System.out.println(lightLevel);
+//				g.setComposite(AlphaComposite.getInstance(
+//						AlphaComposite.SRC_OVER, lightLevel));
+//				g.setColor(Color.BLACK);
+//				g.fillRect((int) pos.getWorldLocation().xpos,
+//						(int) pos.getWorldLocation().ypos, BlockSize, BlockSize);
+//				g.setColor(Color.WHITE);
+//				g.setComposite(AlphaComposite.getInstance(
+//						AlphaComposite.SRC_OVER, 1));
 
 			} else {
 				g.fillRect((int) pos.getWorldLocation().xpos,
@@ -109,7 +115,7 @@ public class Block extends Rectangle {
 	}
 
 	public enum BlockType {
-		STONE_1, WALL_1
+		STONE_1, WALL_1, TEMPLESTONE_1, STONEWINDOW_1
 	}
 
 	public boolean isSolid() {

@@ -26,8 +26,8 @@ public class Player implements KeyListener {
 
 	Vector2F pos;
 	private World world;
-	private int width = 32 * 3; // player smaller then blocks (48)
-	private int height = 32 * 3;
+	private int width = 32 * 2; // player smaller then blocks (48)
+	private int height = 32 * 2;
 	private int scale = 2;
 	private static boolean up, down, left, right, running;
 	private static boolean debug = false; // can be static since only one player
@@ -50,9 +50,10 @@ public class Player implements KeyListener {
 
 	/*
 	 * Rendering
+	 *TODO: Need to make automatic for different monitors 
 	 */
-	private int renderDistanceW = 48;
-	private int renderDistanceH = 25;
+	private int renderDistanceW = 60; //60
+	private int renderDistanceH = 35; //35
 	public static Rectangle render;
 
 	// TODO
@@ -79,9 +80,12 @@ public class Player implements KeyListener {
 	private PlayerActions playerActions;
 
 	public Player() {
-		pos = new Vector2F(Main.width / 2 - width / 2, Main.height / 2 - height
-				/ 2); // exactly in center
+		//pos = new Vector2F(Main.width / 2 - width / 2, Main.height / 2 - height / 2); // exactly in center
+		//pos = new Vector2F(0, 0); //top left of the screen
+		//pos = new Vector2F(Main.width, Main.height); //Bottom right of the screen
+		pos = new Vector2F(200, 600);
 		// This effects where the character is placed on the screen at first
+		// If you change the Vector 2F, you change where the player is on the screen
 	}
 
 	public void init(World world) {
@@ -91,9 +95,9 @@ public class Player implements KeyListener {
 		this.world = world;
 
 		render = new Rectangle((int) (pos.xpos - pos.getWorldLocation().xpos
-				+ pos.xpos - renderDistanceW * 32 / 2 + width / 2),
+				+ pos.xpos - renderDistanceW * 32 / 2 + width / 2 + 700),
 				(int) (pos.ypos - pos.getWorldLocation().ypos + pos.ypos
-						- renderDistanceH * 32 / 2 + height / 2),
+						- renderDistanceH * 32 / 2 + height / 2 - 100),
 				renderDistanceW * 32, renderDistanceH * 32); // Changes what is
 																// rendered on
 																// the screen
@@ -181,11 +185,12 @@ public class Player implements KeyListener {
 
 		playerMM.tick();
 		playerActions.tick();
+		
 
 		render = new Rectangle((int) (pos.xpos - pos.getWorldLocation().xpos
-				+ pos.xpos - renderDistanceW * 32 / 2 + width / 2),
+				+ pos.xpos - renderDistanceW * 32 / 2 + width / 2 + 700),
 				(int) (pos.ypos - pos.getWorldLocation().ypos + pos.ypos
-						- renderDistanceH * 32 / 2 + height / 2),
+						- renderDistanceH * 32 / 2 + height / 2 - 100),
 				renderDistanceW * 32, renderDistanceH * 32); // Changes what is
 																// rendered on
 																// the screen
@@ -472,14 +477,14 @@ public class Player implements KeyListener {
 	}
 
 	public void render(Graphics2D g) {
-		// g.fillRect((int) pos.xpos, (int) pos.ypos, width, height); //gives
+		 g.fillRect((int) pos.xpos, (int) pos.ypos, width, height); //gives
 		// the white square for debugging
 
 		// To make the movie look
-		// g.clearRect(0, 0, Main.width, Main.height / 6); //Makes a black box
-		// given the parameters
-		// g.clearRect(0, Main.height - Main.height / 6, Main.width, Main.height
-		// / 6);
+		 g.clearRect(0, 0, Main.width, Main.height / 6); //Makes a black box
+		 //given the parameters
+		 g.clearRect(0, Main.height - Main.height / 6, Main.width, Main.height
+		 / 6);
 		
 		if (playerActions.attack_state != null) {
 			if (!playerActions.hasCompleted) {
@@ -566,15 +571,16 @@ public class Player implements KeyListener {
 			ani_idle.update(System.currentTimeMillis());
 		}
 
-
-		g.drawString(playerActions.getAttackTime() + "", 200, 500);
-		g.drawString(playerActions.hasCompleted() + "", 200, 550);
-		g.drawString(playerActions.attacked() + "", 200, 600);
+		// the timing for the strings
+		//g.drawString(playerActions.getAttackTime() + "", 200, 500);
+		//g.drawString(playerActions.hasCompleted() + "", 200, 550);
+		//g.drawString(playerActions.attacked() + "", 200, 600);
 
 		// The white rectangle around the rendering
-		// g.drawRect((int) pos.xpos - renderDistanceW * 32 / 2 + width / 2,
-		// (int) pos.ypos - renderDistanceH * 32 / 2 + height / 2,
-		// renderDistanceW * 32, renderDistanceH * 32);
+		 g.drawRect((int) pos.xpos - renderDistanceW * 32 / 2 + width / 2 + 700,
+		 (int) pos.ypos - renderDistanceH * 32 / 2 + height / 2 - 100,
+		 renderDistanceW * 32, renderDistanceH * 32);
+		 
 		hudm.render(g);
 		guim.render(g);
 		playerMM.render(g);

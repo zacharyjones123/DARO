@@ -122,7 +122,7 @@ public class World {
 						break;
 					case 0x404040: // GRAY
 						tiles.blocks.add(new Block(new Vector2F(x * 48, y * 48),
-								BlockType.WALL_1).isSolid(true));
+								BlockType.WALL_1).isSolid(false));
 						break;
 					case 0xFFD800: // YELLOW
 						tiles.blocks.add(new Block(new Vector2F(x * 48, y * 48),
@@ -132,6 +132,13 @@ public class World {
 						tiles.blocks.add(new Block(new Vector2F(x * 48, y * 48),
 								BlockType.STONE_1));
 						break;
+					case 0x7F3300: // LIGHT BROWN
+						tiles.blocks.add(new Block(new Vector2F(x * 48, y * 48),
+								BlockType.TEMPLESTONE_1));
+						break;
+					case 0x1B5F7C: //DARK BLUE
+						tiles.blocks.add(new Block(new Vector2F(x * 48, y * 48),
+								BlockType.STONEWINDOW_1));
 					}
 				}
 			}
