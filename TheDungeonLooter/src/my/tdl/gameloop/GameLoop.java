@@ -18,7 +18,7 @@ public class GameLoop extends IDGameLoop {
 	
 	@Override
 	public void init() {
-		assets.init();
+		assets.init(); // gives all of the tilemaps and art
 		gsm = new GameStateManager();
 		gsm.init();
 		super.init();

@@ -1,6 +1,8 @@
 package my.tdl.gamestates;
 
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
+import java.awt.image.RenderedImage;
 
 import my.project.gop.main.SpriteSheet;
 import my.project.gop.main.loadImageFrom;
@@ -53,10 +55,13 @@ public class DungeonLevelLoader extends GameState {
 
 	@Override
 	public void render(Graphics2D g) {
+		RenderedImage ri = loadImageFrom.LoadImageFrom(Main.class, "background.jpg");
+		AffineTransform at =  new AffineTransform();
+		g.drawRenderedImage(ri, at);
 		if (world.hasGenerated()) {
 			world.render(g);
 		}
-		g.clipRect(0, 0, Main.width, Main.height);
+		//g.clipRect(0, 0, Main.width, Main.height);
 	}
 
 }

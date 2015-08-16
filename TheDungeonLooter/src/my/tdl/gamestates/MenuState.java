@@ -46,7 +46,7 @@ public class MenuState extends GameState {
 
 	@Override
 	public void render(Graphics2D g) {
-		RenderedImage ri = loadImageFrom.LoadImageFrom(Main.class, "ri.jpg");
+		RenderedImage ri = loadImageFrom.LoadImageFrom(Main.class, "TItleScreen.png");
 		AffineTransform at =  new AffineTransform();
 		//g.clipRect(0, 0, Main.width, Main.height);
 		g.drawRenderedImage(ri, at);
